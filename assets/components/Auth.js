@@ -1,5 +1,27 @@
 import auth from "@react-native-firebase/auth";
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+
+
+  export async function checkLogIn (props){
+    const dispatch = useDispatch();
+    let email = await AsyncStorage.getItem('logInlog');
+    console.log('email',email)
+    if (email === null) {
+    }
+    else
+    {
+      dispatch({type: 'login', step: email});
+      props.navigation.navigate('HomeScreen');
+    }
+  };
+
+export const preserveLogIn = async (email) => {
+  console.log(email);
+  AsyncStorage.setItem('logInlog', email);
+};
+
 
 export function signIn({email, password}) {
   return auth().signInWithEmailAndPassword(email, password);

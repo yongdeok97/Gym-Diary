@@ -4,6 +4,8 @@ import {
   signIn,
   googleSigninConfigure,
   onGoogleButtonPress,
+  checkLogIn,
+  preserveLogIn,
 } from '../assets/components/Auth';
 import {useDispatch, useSelector} from 'react-redux';
 import * as LM from '../assets/styles/LMStyle/LMStyle'
@@ -13,15 +15,18 @@ const LoginScreen = props => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
 
+  
   const checkLogin = useSelector(state => state.email);
-
+  // console.log('ehllo',checkLogin);
+  
+  checkLogIn(props)
   const signInSubmit = async () => {
     const info = {email, password};
     try {
       const {user} = await signIn(info);
       console.log(user);
+      preserveLogIn(email);
       dispatch({type: 'login', step: email});
-      console.log(checkLogin);
       props.navigation.navigate('HomeScreen');
     } catch (e) {
       Alert.alert('로그인에 실패셨습니다');
