@@ -15,8 +15,8 @@ const Stack = createStackNavigator();
 function GymNavigation() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="MembershipScreen" component={MembershipScreen} /> */}
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="MembershipScreen" component={MembershipScreen} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="TimeScreen" component={TimeScreen} />
       <Stack.Screen name="ExerciseScreen" component={ExerciseScreen} />

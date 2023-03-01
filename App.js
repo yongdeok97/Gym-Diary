@@ -7,9 +7,14 @@ import { Provider } from 'react-redux';
 function reducer(currentState, action)
 {
   if (action.type === 'login'){
-    return {
-      ...currentState, email:currentState.email + action.step
+    if (currentState.email === '')
+    {
+      return {
+        ...currentState, email:currentState.email + action.step
+      }
     }
+    else
+      return {...currentState}
   }
   const newState = {...currentState};
   return newState

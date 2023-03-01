@@ -1,5 +1,5 @@
-import React from "react";
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 //check screen
 export const MainView = styled.SafeAreaView`
@@ -48,12 +48,21 @@ export const SubLabel = styled.Text`
   color: #333;
 `;
 
-
 export const ButtonView = styled.View`
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 25px;
 `;
+
+export const BackButtonView = styled.View`
+  align-items: flex-start;
+  padding-left: 20px;
+
+`;
+export const BackButton = styled.TouchableOpacity`
+
+`
+
 export const Button = styled.TouchableOpacity`
   padding: 10px 20px;
   background-color: #333;

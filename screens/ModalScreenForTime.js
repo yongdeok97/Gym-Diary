@@ -13,9 +13,10 @@ export default function ModalScreenForTime(props) {
   const minutes = [];
   const seconds = [];
 
-  for (let i = 0; i < 60; i += 10) {
-    minutes.push(i);
+  for (let i = 0; i < 60; i += 1) {
     seconds.push(i);
+    if (i < 6)
+      minutes.push(i);
   }
 
   return (

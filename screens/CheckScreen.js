@@ -7,12 +7,14 @@ import * as Check from '../assets/styles/CheckStyle/CheckStyle'
 
 export default function CheckScreen(props) {
   const checkLogin = useSelector(state => state.email)
+  console.log(checkLogin);
   const addCollection = firestore().collection(String(checkLogin));
+
 
   const deleteBtn = () => {
     AsyncStorage.clear(),
     setRecordList([]),
-    props.navigation.popToTop();
+    props.navigation.navigate("HomeScreen");
   }
 
   const createTwoButtonAlert = () =>
