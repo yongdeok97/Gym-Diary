@@ -1,13 +1,7 @@
 import React, {useState} from 'react';
 import {Alert, Text} from 'react-native';
-import styled from 'styled-components/native';
-import {
-  signUp,
-  onGoogleButtonPress,
-  googleSigninConfigure,
-} from '../assets/components/Auth';
+import {signUp} from '../assets/components/Auth';
 import * as LM from '../assets/styles/LMStyle/LMStyle';
-
 
 const resultMessages = {
   'auth/email-already-in-use': '이미 가입된 이메일입니다.',

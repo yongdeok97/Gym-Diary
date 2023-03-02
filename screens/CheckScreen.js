@@ -1,38 +1,33 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
-import { Alert } from 'react-native';
-import { useSelector } from 'react-redux';
-import * as Check from '../assets/styles/CheckStyle/CheckStyle'
+import {Alert} from 'react-native';
+import {useSelector} from 'react-redux';
+import * as Check from '../assets/styles/CheckStyle/CheckStyle';
 
 export default function CheckScreen(props) {
-  const checkLogin = useSelector(state => state.email)
+  const checkLogin = useSelector(state => state.email);
   console.log(checkLogin);
   const addCollection = firestore().collection(String(checkLogin));
 
-
   const deleteBtn = () => {
     AsyncStorage.clear(),
-    setRecordList([]),
-    props.navigation.navigate("HomeScreen");
-  }
+      setRecordList([]),
+      props.navigation.navigate('HomeScreen');
+  };
 
   const createTwoButtonAlert = () =>
-    Alert.alert(
-      'round',
-      '운동 기록을 다 삭제 하시겠습니까?',
-      [
+    Alert.alert('round', '운동 기록을 다 삭제 하시겠습니까?', [
       {
         text: 'Cancel',
-        onPress: (() => {
-        }),
+        onPress: () => {},
         style: 'cancel',
       },
       {
         text: 'OK',
-        onPress: (deleteBtn),
+        onPress: deleteBtn,
         style: 'OK',
-      }
+      },
     ]);
 
   const addText = async () => {
@@ -96,14 +91,14 @@ export default function CheckScreen(props) {
               AsyncStorage.clear(),
               setRecordList([]),
               console.log(recordList);
-              alert('저장 되었습니다');
-              props.navigation.navigate("HomeScreen");
+            alert('저장 되었습니다');
+            props.navigation.navigate('HomeScreen');
           }}>
           <Check.ButtonLabel>확인 및 저장</Check.ButtonLabel>
         </Check.Button>
         <Check.Button
           onPress={() => {
-            createTwoButtonAlert()
+            createTwoButtonAlert();
           }}>
           <Check.ButtonLabel>삭제</Check.ButtonLabel>
         </Check.Button>

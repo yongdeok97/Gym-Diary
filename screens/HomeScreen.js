@@ -1,152 +1,43 @@
 import React from 'react';
-import styled from 'styled-components';
 import ModalScreenForTime from './ModalScreenForTime';
 import ModalScreenForReps from './ModalScreenForReps';
-
-const Container = styled.SafeAreaView`
-  flex: 1;
-  background-color: #f2f2f2;
-  padding: 20px;
-`;
-
-const ContentContainer = styled.View`
-  flex: 1;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const MenuContainer = styled.View`
-  height: 50px;
-  width: 100%;
-  margin-left: 20px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const MenuButton = styled.TouchableOpacity`
-  padding: 10px;
-`;
-
-const MenuText = styled.Text`
-  font-size: 20px;
-  color: #171999;
-  font-weight: bold;
-`;
-
-const Title = styled.Text`
-  font-size: 50px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  color: #171999;
-`;
-
-const InputRow = styled.View`
-  flex-direction: row;
-  margin-top: 20px;
-  width: 100%;
-`;
-
-const LabelContainer = styled.View`
-  flex: 0.3;
-  align-items: center;
-  justify-content: center;
-`;
-
-const LabelText = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 10px;
-  color: #171999;
-`;
-
-const InputContainer = styled.View`
-  flex: 0.6;
-  height: 50px;
-  margin-top: 15px;
-  align-items: center;
-  border-color: #171999;
-  border-width: 1.6;
-  border-radius: 10px;
-  padding: 10px;
-  margin-right: 10px;
-`;
-
-const Input = styled.TextInput`
-  font-size: 20px;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 10px;
-  color: #171999;
-`;
-
-const Contents = styled.View`
-  flex: 0.4;
-  padding: 24px;
-  align-items: center;
-  justify-content: flex-end;
-`;
-
-const PlayButton = styled.TouchableOpacity`
-  background-color: #171999;
-  border-color: #171999;
-  border-width: 1.6;
-  padding: 12px 0px;
-  width: 80%;
-  border-radius: 10px;
-  margin-bottom: 30px;
-`;
-
-const ButtonLabel = styled.Text`
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-`;
-
-const SetLabel = styled.Text`
-  font-size: 20px;
-`;
+import * as Home from '../assets/styles/HomeStyle/HomeStyle';
 
 export default function HomeScreen(props) {
-  const [type, setType] = React.useState();
+  const [type, setType] = React.useState('');
   const [time, setTime] = React.useState(0);
   const [rest, setRest] = React.useState(0);
   const [reps, setReps] = React.useState(0);
-  
-  const onTimeSelect = (value) => {
+
+  const onTimeSelect = value => {
     setTime(value);
-  }
+  };
 
-  const onRepsSelect = (value) => {
+  const onRepsSelect = value => {
     setReps(value);
-  }
+  };
 
-  const onRestSelect = (value) => {
+  const onRestSelect = value => {
     setRest(value);
-  }
+  };
 
   return (
-    <Container>
-      <MenuContainer>
-        <MenuButton
+    <Home.Container>
+      <Home.MenuContainer>
+        <Home.MenuButton
           onPress={() => {
             props.navigation.openDrawer();
           }}>
-          <MenuText>🏋️</MenuText>
-        </MenuButton>
-      </MenuContainer>
-      <Title>Set Routine</Title>
-      <ContentContainer>
-        <InputRow>
-          <LabelContainer>
-            <LabelText>운동</LabelText>
-          </LabelContainer>
-          <InputContainer
+          <Home.MenuText>🏋️</Home.MenuText>
+        </Home.MenuButton>
+      </Home.MenuContainer>
+      <Home.Title>Set Routine</Home.Title>
+      <Home.ContentContainer>
+        <Home.InputRow>
+          <Home.LabelContainer>
+            <Home.LabelText>운동</Home.LabelText>
+          </Home.LabelContainer>
+          <Home.InputContainer
             style={[
               {
                 shadowColor: '#171999',
@@ -155,18 +46,18 @@ export default function HomeScreen(props) {
                 shadowRadius: 3,
               },
             ]}>
-            <Input
+            <Home.Input
               onChangeText={setType}
               value={type}
               placeholder=" set exercise name"
             />
-          </InputContainer>
-        </InputRow>
-        <InputRow>
-          <LabelContainer>
-            <LabelText>휴식</LabelText>
-          </LabelContainer>
-          <InputContainer
+          </Home.InputContainer>
+        </Home.InputRow>
+        <Home.InputRow>
+          <Home.LabelContainer>
+            <Home.LabelText>휴식</Home.LabelText>
+          </Home.LabelContainer>
+          <Home.InputContainer
             style={[
               {
                 shadowColor: '#171999',
@@ -175,17 +66,17 @@ export default function HomeScreen(props) {
                 shadowRadius: 3,
               },
             ]}>
-            <SetLabel>
+            <Home.SetLabel>
               {Math.floor(rest / 60)} : {rest % 60}
-            </SetLabel>
-          </InputContainer>
+            </Home.SetLabel>
+          </Home.InputContainer>
           <ModalScreenForTime onValueChange={onRestSelect}></ModalScreenForTime>
-        </InputRow>
-        <InputRow>
-          <LabelContainer>
-            <LabelText>라운드</LabelText>
-          </LabelContainer>
-          <InputContainer
+        </Home.InputRow>
+        <Home.InputRow>
+          <Home.LabelContainer>
+            <Home.LabelText>라운드</Home.LabelText>
+          </Home.LabelContainer>
+          <Home.InputContainer
             style={[
               {
                 shadowColor: '#171999',
@@ -194,18 +85,15 @@ export default function HomeScreen(props) {
                 shadowRadius: 3,
               },
             ]}>
-            <SetLabel>
-              {reps}
-            </SetLabel>
-          </InputContainer>
+            <Home.SetLabel>{reps}</Home.SetLabel>
+          </Home.InputContainer>
           <ModalScreenForReps onValueChange={onRepsSelect}></ModalScreenForReps>
-        </InputRow>
-
-        <InputRow>
-          <LabelContainer>
-            <LabelText>시간</LabelText>
-          </LabelContainer>
-          <InputContainer
+        </Home.InputRow>
+        <Home.InputRow>
+          <Home.LabelContainer>
+            <Home.LabelText>시간</Home.LabelText>
+          </Home.LabelContainer>
+          <Home.InputContainer
             style={[
               {
                 shadowColor: '#171999',
@@ -214,15 +102,15 @@ export default function HomeScreen(props) {
                 shadowRadius: 3,
               },
             ]}>
-            <SetLabel>
+            <Home.SetLabel>
               {Math.floor(time / 60)} : {time % 60}
-            </SetLabel>
-          </InputContainer>
+            </Home.SetLabel>
+          </Home.InputContainer>
           <ModalScreenForTime onValueChange={onTimeSelect}></ModalScreenForTime>
-        </InputRow>
-      </ContentContainer>
-      <Contents>
-        <PlayButton
+        </Home.InputRow>
+      </Home.ContentContainer>
+      <Home.Contents>
+        <Home.PlayButton
           onPress={() => {
             const newItem = {
               type: type,
@@ -249,9 +137,9 @@ export default function HomeScreen(props) {
                 props.navigation.navigate('TimeScreen', {info: newItem});
             }
           }}>
-          <ButtonLabel>go!</ButtonLabel>
-        </PlayButton>
-      </Contents>
-    </Container>
+          <Home.ButtonLabel>go!</Home.ButtonLabel>
+        </Home.PlayButton>
+      </Home.Contents>
+    </Home.Container>
   );
 }

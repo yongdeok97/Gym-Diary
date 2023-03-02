@@ -1,11 +1,10 @@
 import React from 'react';
 import firestore from '@react-native-firebase/firestore';
-import { useSelector } from 'react-redux';
-import * as Check from '../assets/styles/CheckStyle/CheckStyle'
-
+import {useSelector} from 'react-redux';
+import * as Check from '../assets/styles/CheckStyle/CheckStyle';
 
 export default function CheckScreenDay(props) {
-  const checkLogin = useSelector(state => state.email)
+  const checkLogin = useSelector(state => state.email);
   const [recordList, setRecordList] = React.useState([]);
   const addCollection = firestore().collection(String(checkLogin));
 
@@ -24,17 +23,21 @@ export default function CheckScreenDay(props) {
   }, []);
   return (
     <Check.MainView>
-        <Check.BackButtonView>
-            <Check.BackButton 
-                onPress={() => {props.navigation.pop()}}
-            >
-                <Check.ButtonLabel>
-                🔙
-                </Check.ButtonLabel>
-            </Check.BackButton>
-        </Check.BackButtonView>
+      <Check.BackButtonView>
+        <Check.BackButton
+          onPress={() => {
+            props.navigation.pop();
+          }}>
+          <Check.ButtonLabel>🔙</Check.ButtonLabel>
+        </Check.BackButton>
+      </Check.BackButtonView>
       <Check.MainLabelView>
-        <Check.MainLabel>{props.route.params.id.replace(':', '-').replace(':', '-').replace(':', '  ')}</Check.MainLabel>
+        <Check.MainLabel>
+          {props.route.params.id
+            .replace(':', '-')
+            .replace(':', '-')
+            .replace(':', '  ')}
+        </Check.MainLabel>
       </Check.MainLabelView>
       <Check.Scroll>
         {recordList !== undefined ? (

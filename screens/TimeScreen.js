@@ -2,8 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 import {useIsFocused} from '@react-navigation/native';
-import * as T from '../assets/styles/TimeStyle/TimeStyle'
-
+import * as T from '../assets/styles/TimeStyle/TimeStyle';
 
 export default function TimeScreen(props) {
   const isFocused = useIsFocused();

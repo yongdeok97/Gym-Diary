@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-import styled from 'styled-components/native';
 import Modal from 'react-native/Libraries/Modal/Modal';
 import {Picker} from '@react-native-picker/picker';
-import * as M from '../assets/styles/ModalStyle/ModalStyle'
-
+import * as M from '../assets/styles/ModalStyle/ModalStyle';
 
 export default function ModalScreenForTime(props) {
   const [showModal, setShowModal] = useState(false);
@@ -15,8 +13,7 @@ export default function ModalScreenForTime(props) {
 
   for (let i = 0; i < 60; i += 1) {
     seconds.push(i);
-    if (i < 6)
-      minutes.push(i);
+    if (i < 6) minutes.push(i);
   }
 
   return (
@@ -60,12 +57,13 @@ export default function ModalScreenForTime(props) {
                 </Picker>
               </M.PickerContainer>
             </M.ModalSubContent>
-            <M.Button onPress={() => {
+            <M.Button
+              onPress={() => {
                 // setShowModal(false),
                 // console.log(onValueSelected)
                 props.onValueChange(selectedMinutes * 60 + selectedSeconds);
                 setShowModal(false);
-            }}>
+              }}>
               <M.ButtonText>Done</M.ButtonText>
             </M.Button>
           </M.ModalContent>

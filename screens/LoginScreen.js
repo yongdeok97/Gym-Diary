@@ -8,18 +8,16 @@ import {
   preserveLogIn,
 } from '../assets/components/Auth';
 import {useDispatch, useSelector} from 'react-redux';
-import * as LM from '../assets/styles/LMStyle/LMStyle'
+import * as LM from '../assets/styles/LMStyle/LMStyle';
 
 const LoginScreen = props => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
 
-  
   const checkLogin = useSelector(state => state.email);
-  // console.log('ehllo',checkLogin);
-  
-  checkLogIn(props)
+
+  checkLogIn(props);
   const signInSubmit = async () => {
     const info = {email, password};
     try {
@@ -27,7 +25,7 @@ const LoginScreen = props => {
       console.log(user);
       preserveLogIn(email);
       dispatch({type: 'login', step: email});
-      props.navigation.navigate('HomeScreen');
+      props.navigation.navigate('HomeScÍeen');
     } catch (e) {
       Alert.alert('로그인에 실패셨습니다');
     }

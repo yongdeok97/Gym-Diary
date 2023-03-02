@@ -2,8 +2,7 @@ import React from 'react';
 import {Text, Alert} from 'react-native';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as T from '../assets/styles/TimeStyle/TimeStyle'
-
+import * as T from '../assets/styles/TimeStyle/TimeStyle';
 
 export default function ExerciseScreen(props) {
   const [isPlaying, setIsPlaying] = React.useState(true);
@@ -14,7 +13,7 @@ export default function ExerciseScreen(props) {
 
   let round = props.route.params.round;
   let Ptype = props.route.params.info.info.type;
-  
+
   const store = async () => {
     let newList = await AsyncStorage.getItem('record');
     if (newList === null) {
@@ -23,7 +22,6 @@ export default function ExerciseScreen(props) {
       newList = JSON.parse(newList);
     }
     newList.push({type: Ptype, round: round, weight: weight, count: count});
-    console.log(props.route.params.round,  props.route.params.info.info.reps)
     AsyncStorage.setItem('record', JSON.stringify(newList));
     String(props.route.params.round) == props.route.params.info.info.reps
       ? props.navigation.navigate('CheckScreen')
@@ -94,11 +92,7 @@ export default function ExerciseScreen(props) {
               shadowRadius: 3,
             },
           ]}>
-          <T.InputText
-            onChangeText={setWeight}
-            value={weight}
-            placeholder=""
-          />
+          <T.InputText onChangeText={setWeight} value={weight} placeholder="" />
         </T.InputView>
         <T.InputLabel> kg </T.InputLabel>
       </T.LabelView>
@@ -113,11 +107,7 @@ export default function ExerciseScreen(props) {
               shadowRadius: 3,
             },
           ]}>
-          <T.InputText
-            onChangeText={setCount}
-            value={count}
-            placeholder=""
-            />
+          <T.InputText onChangeText={setCount} value={count} placeholder="" />
         </T.InputView>
         <T.InputLabel> 회 </T.InputLabel>
       </T.LabelView>
@@ -130,4 +120,3 @@ export default function ExerciseScreen(props) {
     </T.Container>
   );
 }
-
