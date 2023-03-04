@@ -3,6 +3,7 @@ import Modal from 'react-native/Libraries/Modal/Modal';
 import {Picker} from '@react-native-picker/picker';
 import * as M from '../assets/styles/ModalStyle/ModalStyle';
 
+// The contents related to exercise records were processed separately because the modal window UI for setting reps was different.
 export default function ModalScreenForReps(props) {
   const [showModal, setShowModal] = useState(false);
   const [selectedReps, setSelectedReps] = useState(0);

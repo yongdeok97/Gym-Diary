@@ -3,11 +3,14 @@ import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
 import * as Check from '../assets/styles/CheckStyle/CheckStyle';
 
+// A page where you can check my records
 export default function CheckScreenDay(props) {
+  // email used as key
   const checkLogin = useSelector(state => state.email);
   const [recordList, setRecordList] = React.useState([]);
   const addCollection = firestore().collection(String(checkLogin));
 
+  // load all records
   const _callApi = async () => {
     try {
       const data = await addCollection.doc(String(props.route.params.id)).get();

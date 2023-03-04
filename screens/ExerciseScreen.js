@@ -6,14 +6,15 @@ import * as T from '../assets/styles/TimeStyle/TimeStyle';
 
 export default function ExerciseScreen(props) {
   const [isPlaying, setIsPlaying] = React.useState(true);
-  const [mode, setMode] = React.useState(true);
 
+  const [mode, setMode] = React.useState(true);
   const [weight, setWeight] = React.useState();
   const [count, setCount] = React.useState();
 
   let round = props.route.params.round;
   let Ptype = props.route.params.info.info.type;
-
+  // ayncStorage storage function
+  // In order to access the database less, use ayncStorage to collect and upload data at once.
   const store = async () => {
     let newList = await AsyncStorage.getItem('record');
     if (newList === null) {
@@ -84,6 +85,7 @@ export default function ExerciseScreen(props) {
       <T.LabelView>
         <T.InputLabel>무게 입력: </T.InputLabel>
         <T.InputView
+          // In styled-comonent, it does not work, so it is put inline...
           style={[
             {
               shadowColor: '#171999',
@@ -92,7 +94,7 @@ export default function ExerciseScreen(props) {
               shadowRadius: 3,
             },
           ]}>
-          <T.InputText onChangeText={setWeight} value={weight} placeholder="" />
+          <T.InputText onChangeText={setWeight} value={weight} />
         </T.InputView>
         <T.InputLabel> kg </T.InputLabel>
       </T.LabelView>
@@ -107,7 +109,7 @@ export default function ExerciseScreen(props) {
               shadowRadius: 3,
             },
           ]}>
-          <T.InputText onChangeText={setCount} value={count} placeholder="" />
+          <T.InputText onChangeText={setCount} value={count} />
         </T.InputView>
         <T.InputLabel> 회 </T.InputLabel>
       </T.LabelView>

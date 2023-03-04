@@ -3,6 +3,7 @@ import Modal from 'react-native/Libraries/Modal/Modal';
 import {Picker} from '@react-native-picker/picker';
 import * as M from '../assets/styles/ModalStyle/ModalStyle';
 
+// A modal window to set the contents related to the exercise record
 export default function ModalScreenForTime(props) {
   const [showModal, setShowModal] = useState(false);
   const [selectedMinutes, setSelectedMinutes] = useState(0);
@@ -59,8 +60,6 @@ export default function ModalScreenForTime(props) {
             </M.ModalSubContent>
             <M.Button
               onPress={() => {
-                // setShowModal(false),
-                // console.log(onValueSelected)
                 props.onValueChange(selectedMinutes * 60 + selectedSeconds);
                 setShowModal(false);
               }}>

@@ -10,14 +10,17 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import * as LM from '../assets/styles/LMStyle/LMStyle';
 
-const LoginScreen = props => {
+// page for login
+export default function LoginScreen(props) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
 
-  const checkLogin = useSelector(state => state.email);
+  // const checkLogin = useSelector(state => state.email);
 
+  // Function to keep login
   checkLogIn(props);
+  // login function
   const signInSubmit = async () => {
     const info = {email, password};
     try {
@@ -25,12 +28,13 @@ const LoginScreen = props => {
       console.log(user);
       preserveLogIn(email);
       dispatch({type: 'login', step: email});
-      props.navigation.navigate('HomeScÍeen');
+      props.navigation.navigate('HomeScreen');
     } catch (e) {
       Alert.alert('로그인에 실패셨습니다');
     }
   };
 
+  // google login function
   const signInWithGoogle = async () => {
     try {
       await onGoogleButtonPress();
@@ -78,4 +82,3 @@ const LoginScreen = props => {
   );
 };
 
-export default LoginScreen;

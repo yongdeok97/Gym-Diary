@@ -4,12 +4,13 @@ import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 import {useIsFocused} from '@react-navigation/native';
 import * as T from '../assets/styles/TimeStyle/TimeStyle';
 
+// restTime Screen
 export default function TimeScreen(props) {
+  // Used to override the time when coming back from the exercise screen
   const isFocused = useIsFocused();
-
+  
   const [isPlaying, setIsPlaying] = React.useState(true);
   const [mode, setMode] = React.useState(true);
-
   const [round, setRound] = React.useState(0);
   const [rest, setRest] = React.useState();
 

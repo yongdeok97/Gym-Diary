@@ -56,6 +56,7 @@ export const ButtonView = styled.View`
 
 export const BackButtonView = styled.View`
   align-items: flex-start;
+  margin-top: 20px;
   padding-left: 20px;
 
 `;
@@ -73,3 +74,7 @@ export const ButtonLabel = styled.Text`
   font-size: 15px;
   color: #fff;
 `;
+
+
+
+// record

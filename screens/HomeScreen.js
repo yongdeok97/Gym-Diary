@@ -3,7 +3,10 @@ import ModalScreenForTime from './ModalScreenForTime';
 import ModalScreenForReps from './ModalScreenForReps';
 import * as Home from '../assets/styles/HomeStyle/HomeStyle';
 
+// Home Screen
+// Set my exercise information
 export default function HomeScreen(props) {
+  // for exercise log
   const [type, setType] = React.useState('');
   const [time, setTime] = React.useState(0);
   const [rest, setRest] = React.useState(0);
@@ -28,7 +31,7 @@ export default function HomeScreen(props) {
           onPress={() => {
             props.navigation.openDrawer();
           }}>
-          <Home.MenuText>🏋️</Home.MenuText>
+          <Home.MenuText>🟰</Home.MenuText>
         </Home.MenuButton>
       </Home.MenuContainer>
       <Home.Title>Set Routine</Home.Title>
@@ -38,6 +41,7 @@ export default function HomeScreen(props) {
             <Home.LabelText>운동</Home.LabelText>
           </Home.LabelContainer>
           <Home.InputContainer
+          // In styled-comonent, it does not work, so it is put inline...
             style={[
               {
                 shadowColor: '#171999',
@@ -111,7 +115,7 @@ export default function HomeScreen(props) {
       </Home.ContentContainer>
       <Home.Contents>
         <Home.PlayButton
-          onPress={() => {
+          onPress={() => {{
             const newItem = {
               type: type,
               rest: rest,
@@ -130,13 +134,13 @@ export default function HomeScreen(props) {
             } else if (reps <= 0) {
               alert('적어도 한 라운드 이상 진행 하셔야 합니다');
             } else {
-              setTime(0),
+                setTime(0),
                 setReps(0),
                 setRest(0),
                 setType(),
                 props.navigation.navigate('TimeScreen', {info: newItem});
             }
-          }}>
+          }}}>
           <Home.ButtonLabel>go!</Home.ButtonLabel>
         </Home.PlayButton>
       </Home.Contents>

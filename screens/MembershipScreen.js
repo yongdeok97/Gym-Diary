@@ -3,6 +3,7 @@ import {Alert, Text} from 'react-native';
 import {signUp} from '../assets/components/Auth';
 import * as LM from '../assets/styles/LMStyle/LMStyle';
 
+// Member registration error message
 const resultMessages = {
   'auth/email-already-in-use': '이미 가입된 이메일입니다.',
   'auth/wrong-password': '잘못된 비밀번호입니다.',
@@ -10,22 +11,22 @@ const resultMessages = {
   'auth/invalid-email': '유효하지 않은 이메일 주소입니다.',
 };
 
-const LoginScreen = props => {
+// membership screen for membership registration
+
+export default function MemberShipScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [Checkpassword, setCheckPassword] = useState('');
 
+  // signup function
   const signUpSubmit = async () => {
-    // 회원가입 함수
     if (password !== Checkpassword) {
       Alert.alert('비밀번호를 확인해 주세요');
       return false;
     }
     const info = {email, password};
-    console.log(info);
     try {
       const {user} = await signUp(info);
-      console.log(user);
       props.navigation.goBack();
     } catch (e) {
       const alertMessage = resultMessages[e.code]
@@ -70,4 +71,3 @@ const LoginScreen = props => {
   );
 };
 
-export default LoginScreen;

@@ -4,11 +4,12 @@ import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
 import * as Record from '../assets/styles/RecordStyle/RecordStyle';
 
+// A page where you can check the list of records by time
 export default function RecordScreen(props) {
   const [users, setUsers] = React.useState();
-  const checkLogin = useSelector(state => state.email);
-  const addCollection = firestore().collection(String(checkLogin));
+  const checkId = useSelector(state => state.email);
 
+  // delete record
   const DeleteDB = async prop => {
     try {
       await addCollection.doc(prop).delete();
@@ -19,8 +20,10 @@ export default function RecordScreen(props) {
   };
 
   React.useEffect(() => {
+    // Get an hourly record of your data.
     const _callApi = async () => {
       try {
+        const addCollection = firestore().collection(String(checkId));
         const data = await addCollection.get();
         setUsers(data._docs.map(doc => ({...doc.data(), id: doc.id})));
       } catch (error) {
@@ -28,7 +31,7 @@ export default function RecordScreen(props) {
       }
     };
     _callApi();
-  }, [users]);
+  }, [checkId]);
 
   return (
     <Record.Container>
@@ -37,7 +40,7 @@ export default function RecordScreen(props) {
           onPress={() => {
             props.navigation.openDrawer();
           }}>
-          <Record.MenuLabel>🏋️</Record.MenuLabel>
+          <Record.MenuLabel>🟰</Record.MenuLabel>
         </Record.MenuButton>
       </Record.MenuView>
       <Record.Contents>

@@ -5,11 +5,14 @@ import {Alert} from 'react-native';
 import {useSelector} from 'react-redux';
 import * as Check from '../assets/styles/CheckStyle/CheckStyle';
 
+// Screen to confirm before saving database
 export default function CheckScreen(props) {
+  const [recordList, setRecordList] = React.useState([]);
+  // Enter the value based on the email imported from Redux.
   const checkLogin = useSelector(state => state.email);
-  console.log(checkLogin);
+  // Add value to email collection
   const addCollection = firestore().collection(String(checkLogin));
-
+  // Delete without saving
   const deleteBtn = () => {
     AsyncStorage.clear(),
       setRecordList([]),
@@ -29,7 +32,7 @@ export default function CheckScreen(props) {
         style: 'OK',
       },
     ]);
-
+  // I think can use the function i used to use the time value as a key a bit prettier.
   const addText = async () => {
     let today = new Date(); // today 객체에 Date()의 결과를 넣어줬다
     let time = {
@@ -44,15 +47,15 @@ export default function CheckScreen(props) {
     try {
       await addCollection.doc(String(timestring)).set({
         type: recordList,
-        // recordList
       });
       console.log('Create Complete!');
     } catch (error) {
       console.log(error.message);
     }
   };
-  const [recordList, setRecordList] = React.useState([]);
+
   React.useEffect(() => {
+    // Designed to retain the value even if the app is terminated in the middle. If it has a value, it is merged with the value to come later.
     const getData = async () => {
       const storageData = JSON.parse(await AsyncStorage.getItem('record'));
       if (storageData) {
@@ -83,7 +86,6 @@ export default function CheckScreen(props) {
           <Check.Label>no</Check.Label>
         )}
       </Check.Scroll>
-
       <Check.ButtonView>
         <Check.Button
           onPress={() => {
