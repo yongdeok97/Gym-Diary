@@ -45,7 +45,7 @@ export function signOut() {
 export const googleSigninConfigure = () => {
   GoogleSignin.configure({
     webClientId:
-      // '776883032422-hla5brdij4eenmhhat84bdtu5fbvhncc.apps.googleusercontent.com',
+      
   });
 };
 
