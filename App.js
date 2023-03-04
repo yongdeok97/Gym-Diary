@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './navigation/AppNavigation';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+
 const intialState = {email: ''};
 
 function reducer(currentState, action) {
