@@ -27,17 +27,34 @@
 <img
 		width="210"
 		alt="Capture 1"
-		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.17.22.png">
+		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.18.34.png">
 <img
 		width="210"
 		alt="Capture 1"
-		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.17.22.png">
+		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.19.00.png">
 <img
 		width="210"
 		alt="Capture 1"
-		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.17.22.png">
+		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.19.39.png">
 <img
 		width="210"
 		alt="Capture 1"
-		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.17.22.png">
+		src="https://github.com/yongdeok97/Gym-diary/blob/main/assets/Preview/Simulator%20Screen%20Shot%20-%20iPhone%2014%20-%202023-03-05%20at%2013.19.50.png">
 
+
+## Installation and usage
+----
+**This project works fine for iOS but in Android version there are serious UI problems because I've only worked on iOS. sorry for android users🙏**
+
+### Running the project
+
+**Clone this repository :**
+
+```
+git clone https://github.com/yongdeok97/Gym-diary.git
+npm i
+cd ios
+pod install
+and you have to fill in ios/Gym/Info.plist
+google api 
+```
